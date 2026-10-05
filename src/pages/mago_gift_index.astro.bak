@@ -1,0 +1,215 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const allPosts = await getCollection('posts');
+
+// 日付順にソート
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// トレンド記事
+const trendPosts = sortedPosts.filter((post) => post.data.isTrend);
+
+// 年齢ナビデータ
+const ageCards = [
+  { age: '0〜1歳', slug: '0-1', desc: '出産祝い・初めての誕生日', icon: '👶', color: 'from-pink-50 to-rose-50 border-rose-200 text-rose-800' },
+  { age: '2〜3歳', slug: '2-3', desc: '言葉・手先を伸ばす知育', icon: '🧸', color: 'from-amber-50 to-orange-50 border-amber-200 text-amber-800' },
+  { age: '4〜6歳', slug: '4-6', desc: '保育園・幼稚園・文字と数字', icon: '🎈', color: 'from-emerald-50 to-teal-50 border-emerald-200 text-emerald-800' },
+  { age: '小学生', slug: 'elementary', desc: '入学祝い・ゲーム・本格知育', icon: '🎒', color: 'from-blue-50 to-sky-50 border-blue-200 text-blue-800' },
+];
+---
+
+<BaseLayout title="まごギフトNavi - じいじ・ばあばの失敗しない孫プレゼント選び">
+  <!-- ヒーローセクション -->
+  <section class="border-b border-amber-200/60 bg-gradient-to-b from-amber-100/50 via-amber-50/20 to-transparent py-10 sm:py-14">
+    <div class="mx-auto max-w-5xl px-4 text-center sm:px-6">
+      <div class="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-4 py-1.5 text-xs font-bold text-amber-800 mb-4 border border-amber-200">
+        <span>🎁 50代・60代・70代のためのプレゼント案内所</span>
+      </div>
+      <h1 class="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl md:text-5xl leading-tight">
+        孫が本当に喜んで、<br class="hidden sm:inline" />
+        <span class="text-amber-600 underline decoration-amber-300 decoration-wavy">息子・娘夫婦にも感謝される</span>贈り物。
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-slate-600 leading-relaxed">
+        「今の子供は何にハマってるの？」「親に迷惑がられない？」<br />
+        テレビで話題の最新おもちゃから、場所を取らない知育アイテムまで、楽天・Amazonの安心公式リンクと共にご案内します。
+      </p>
+
+      <!-- 年齢別クイックボタン（シニア向け特大カード） -->
+      <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+        {ageCards.map((card) => (
+          <a
+            href={`/age/${card.slug}`}
+            class={`group flex flex-col items-center rounded-2xl border-2 bg-gradient-to-b ${card.color} p-4 text-center shadow-sm transition hover:shadow-md hover:scale-[1.02] active:scale-95`}
+          >
+            <span class="text-3xl sm:text-4xl mb-1">{card.icon}</span>
+            <span class="text-base sm:text-lg font-black">{card.age}</span>
+            <span class="mt-1 text-[11px] sm:text-xs opacity-80 leading-snug">{card.desc}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 space-y-16">
+    <!-- 🔥 【急上昇】テレビ・直近トレンド速報枠（一番の集客・CVR源） -->
+    {trendPosts.length > 0 && (
+      <section>
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-2 border-b-2 border-rose-500 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-rose-500 text-white font-bold text-sm animate-pulse">
+              🔥
+            </span>
+            <h2 class="text-2xl font-black text-slate-900">
+              いま検索急上昇！テレビ・話題の注目ギフト
+            </h2>
+          </div>
+          <span class="text-xs font-semibold text-rose-600 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">
+            在庫切れ・転売に注意
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {trendPosts.map((post) => (
+            <article class="flex flex-col justify-between rounded-2xl border-2 border-rose-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+              <div>
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="rounded bg-rose-100 px-2 py-0.5 text-xs font-bold text-rose-700">
+                    速報
+                  </span>
+                  <span class="rounded bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600">
+                    {post.data.category}
+                  </span>
+                  <div class="flex gap-1">
+                    {post.data.targetAge.map((age) => (
+                      <span class="text-xs text-slate-400">#{age}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-slate-900 leading-snug hover:text-amber-600 transition">
+                  <a href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}`}>
+                    {post.data.title}
+                  </a>
+                </h3>
+
+                <p class="mt-3 text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                  {post.data.description}
+                </p>
+
+                {post.data.primaryItem && (
+                  <div class="mt-4 rounded-xl bg-slate-50 p-3 border border-slate-100 text-xs text-slate-700">
+                    <span class="font-bold text-slate-900">紹介商品: </span>
+                    {post.data.primaryItem.name}
+                    {post.data.primaryItem.priceText && (
+                      <span class="ml-2 font-bold text-rose-600">({post.data.primaryItem.priceText})</span>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-xs text-slate-400">
+                  {new Intl.DateTimeFormat('ja-JP', { month: 'short', day: 'numeric' }).format(post.data.pubDate)} 更新
+                </span>
+                <a
+                  href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}`}
+                  class="inline-flex items-center gap-1 text-sm font-bold text-amber-700 hover:text-amber-900"
+                >
+                  <span>在庫と詳細を見る</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- 記事一覧（新着） -->
+    <section>
+      <div class="mb-6 flex items-center justify-between border-b border-slate-200 pb-3">
+        <h2 class="text-2xl font-black text-slate-900">
+          新着・おすすめギフト記事
+        </h2>
+        <span class="text-xs text-slate-500">全{sortedPosts.length}件</span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {sortedPosts.map((post) => (
+          <article class="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="rounded bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-800">
+                  {post.data.category}
+                </span>
+                {post.data.targetAge.map((age) => (
+                  <span class="text-xs text-slate-500 bg-slate-50 px-2 py-0.5 rounded border border-slate-100">
+                    {age}
+                  </span>
+                ))}
+              </div>
+
+              <h3 class="text-lg font-bold text-slate-900 leading-snug hover:text-amber-600 transition">
+                <a href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}`}>
+                  {post.data.title}
+                </a>
+              </h3>
+
+              <p class="mt-2 text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                {post.data.description}
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 'short', day: 'numeric' }).format(post.data.pubDate)}
+              </time>
+              <a
+                href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}`}
+                class="font-bold text-amber-700 hover:text-amber-900"
+              >
+                記事を読む →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- じいじ・ばあばの安心ガイド（シニアの信頼感を高めるコンテンツ） -->
+    <section class="rounded-3xl border-2 border-amber-200 bg-amber-50/60 p-6 sm:p-8">
+      <h2 class="text-center text-xl font-black text-amber-950 sm:text-2xl">
+        まごギフトNaviが大切にしている「3つの安心」
+      </h2>
+
+      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div class="rounded-2xl bg-white p-5 shadow-xs border border-amber-100">
+          <div class="text-2xl mb-2">🛡️</div>
+          <h3 class="font-bold text-slate-900 text-base">転売品・偽物を排除</h3>
+          <p class="mt-1 text-xs text-slate-600 leading-relaxed">
+            テレビ放映後に急増する悪質な高額転売を防ぐため、楽天市場・Amazonの「公式・認定取扱店」のみを厳選してご案内します。
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white p-5 shadow-xs border border-amber-100">
+          <div class="text-2xl mb-2">💡</div>
+          <h3 class="font-bold text-slate-900 text-base">親目線のリアル配慮</h3>
+          <p class="mt-1 text-xs text-slate-600 leading-relaxed">
+            「音がうるさくないか」「部屋が散らからないか」など、息子・娘夫婦に嫌がられない注意点を全記事に掲載しています。
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white p-5 shadow-xs border border-amber-100">
+          <div class="text-2xl mb-2">🎁</div>
+          <h3 class="font-bold text-slate-900 text-base">ギフト対応ショップ</h3>
+          <p class="mt-1 text-xs text-slate-600 leading-relaxed">
+            のし（熨斗）・ラッピング対応のショップや、遠方の孫宅へ直接送っても安心な信頼できるショップ情報を明記しています。
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

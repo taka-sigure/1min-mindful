@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const ageMap: Record<string, { label: string; desc: string; icon: string }> = {
+    '0-1': { label: '0〜1歳', desc: '出産祝い・初めてのお誕生日向け', icon: '👶' },
+    '2-3': { label: '2〜3歳', desc: '言葉・手先を伸ばす知育・イヤイヤ期', icon: '🧸' },
+    '4-6': { label: '4〜6歳', desc: '保育園・幼稚園・文字と数字・社会性', icon: '🎈' },
+    'elementary': { label: '小学生', desc: '入学祝い・プログラミング・本格知育・ゲーム', icon: '🎒' },
+  };
+
+  const ages = ['0-1', '2-3', '4-6', 'elementary'];
+  const allPosts = await getCollection('posts');
+
+  return ages.map((ageKey) => {
+    const ageLabel = {
+      '0-1': '0〜1歳',
+      '2-3': '2〜3歳',
+      '4-6': '4〜6歳',
+      'elementary': '小学生',
+    }[ageKey];
+
+    const filtered = allPosts.filter((p) => p.data.targetAge.includes(ageLabel as string));
+
+    return {
+      params: { age: ageKey },
+      props: { posts: filtered, ageInfo: ageMap[ageKey] },
+    };
+  });
+}
+
+const { posts, ageInfo } = Astro.props;
+---
+
+<BaseLayout title={`${ageInfo.label}向けの孫プレゼント一覧 - まごギフトNavi`}>
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+    <!-- パンくず -->
+    <nav class="mb-6 flex items-center gap-2 text-xs text-slate-500">
+      <a href="/" class="hover:text-amber-600">ホーム</a>
+      <span>&gt;</span>
+      <span class="font-medium text-slate-700">{ageInfo.label}向けギフト</span>
+    </nav>
+
+    <!-- ページ見出し -->
+    <div class="mb-10 rounded-2xl bg-amber-50/80 border border-amber-200 p-6 sm:p-8">
+      <div class="flex items-center gap-3">
+        <span class="text-4xl">{ageInfo.icon}</span>
+        <div>
+          <h1 class="text-2xl font-black text-slate-900 sm:text-3xl">
+            {ageInfo.label}向けの孫プレゼント
+          </h1>
+          <p class="mt-1 text-sm text-slate-600">
+            {ageInfo.desc}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {posts.length === 0 ? (
+      <div class="rounded-2xl bg-white p-12 text-center text-slate-500 border border-slate-200">
+        <p class="text-base font-bold">該当する記事がまだありません。</p>
+        <p class="mt-2 text-xs">順次、最新のおすすめアイテムを追加していきます。</p>
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {posts.map((post) => (
+          <article class="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="rounded bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-800">
+                  {post.data.category}
+                </span>
+                <span class="text-xs text-slate-500">
+                  {post.data.targetAge.join(', ')}
+                </span>
+              </div>
+
+              <h2 class="text-lg font-bold text-slate-900 leading-snug hover:text-amber-600 transition">
+                <a href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}`}>
+                  {post.data.title}
+                </a>
+              </h2>
+
+              <p class="mt-2 text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                {post.data.description}
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 'short', day: 'numeric' }).format(post.data.pubDate)}
+              </time>
+              <a
+                href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}`}
+                class="font-bold text-amber-700 hover:text-amber-900"
+              >
+                記事を読む →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

@@ -1,0 +1,275 @@
+---
+import '../styles/global.css';
+
+const siteTitle = "1分マインドフルネス（@1min_mindful）| 心と脳をととのえる1分";
+const siteDescription = "TikTok『1分マインドフルネス』公式リンク集。スマホを見すぎた脳を1分でリセット。無料の快眠オーディオブック、長尺の睡眠BGM、愛用の快眠グッズまとめ。";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <meta name="theme-color" content="#090d16" />
+    <!-- OGP -->
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="min-h-screen bg-[#090d16] text-slate-200 antialiased selection:bg-indigo-900 selection:text-indigo-200">
+    <div class="mx-auto max-w-lg px-4 py-8 sm:px-6">
+      
+      <!-- アカウントヘッダー -->
+      <header class="text-center">
+        <div class="relative mx-auto inline-block">
+          <div class="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-tr from-indigo-950 via-slate-900 to-indigo-600 text-3xl shadow-2xl border-2 border-indigo-400/40">
+            🧘‍♀️
+          </div>
+          <span class="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500 text-xs font-bold text-white shadow-md">
+            🌙
+          </span>
+        </div>
+
+        <h1 class="mt-3 text-xl font-bold tracking-tight text-white flex items-center justify-center gap-1.5">
+          <span>1分マインドフルネス</span>
+          <span class="text-xs font-normal text-indigo-400">@1min_mindful</span>
+        </h1>
+        <p class="mt-1 text-xs text-slate-400 leading-relaxed max-w-xs mx-auto">
+          スマホを見すぎた脳を、1分でリセット。<br />
+          今夜ぐっすり眠るための公式リソースまとめです。
+        </p>
+
+        <!-- 🧘‍♀️ 呼吸アニメーション（ページ内ミニ瞑想ウィジェット） -->
+        <div class="mt-6 rounded-2xl border border-indigo-900/40 bg-slate-900/80 p-5 backdrop-blur-md shadow-inner">
+          <div class="flex items-center justify-between text-[11px] text-indigo-300 mb-3 px-1">
+            <span class="font-bold tracking-wider">🌿 4-4-8呼吸法</span>
+            <span class="text-slate-500 text-[10px]">画面に合わせて深呼吸</span>
+          </div>
+
+          <div class="relative flex items-center justify-center h-32">
+            <!-- 外側の光るリング -->
+            <div class="absolute h-28 w-28 rounded-full border border-indigo-500/20"></div>
+            <!-- 伸縮する呼吸サークル -->
+            <div class="breathing-circle flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-600/30 to-indigo-400/20 border border-indigo-400/50 text-xs font-bold text-indigo-100 shadow-[0_0_35px_rgba(99,102,241,0.3)]">
+              <span id="breathing-text" class="tracking-widest">息を吸って</span>
+            </div>
+          </div>
+
+          <p class="text-[11px] text-slate-400 text-center mt-3">
+            鼻から吸って 4秒 ➔ 止めて 4秒 ➔ 口から長ーく吐いて 8秒
+          </p>
+        </div>
+      </header>
+
+      <!-- リンクボタン群（高収益・高CVR順） -->
+      <main class="mt-6 space-y-3.5">
+        
+        <!-- 🔥 【最優先・成約率No.1】Amazon Audible 無料体験（1件1,500円） -->
+        <a
+          href="https://www.amazon.co.jp/b?node=5843468051"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="group relative block overflow-hidden rounded-2xl border-2 border-amber-400/60 bg-gradient-to-r from-amber-500/15 via-slate-900 to-indigo-950/60 p-4 shadow-xl transition hover:scale-[1.02] hover:border-amber-400 active:scale-98"
+        >
+          <div class="flex items-center gap-3.5">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-500 text-2xl text-slate-950 shadow-md">
+              🎧
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1.5 mb-0.5">
+                <span class="rounded bg-amber-400/20 px-2 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-400/30">
+                  今だけ完全無料
+                </span>
+                <span class="text-[10px] text-amber-200/80 font-semibold">
+                  30日間無料体験
+                </span>
+              </div>
+              <h2 class="text-sm font-bold text-white group-hover:text-amber-300 transition truncate">
+                寝る前に聴くだけ！睡眠瞑想オーディオブック
+              </h2>
+              <p class="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                Amazon Audibleでプロの快眠朗読・誘導瞑想が無料DL
+              </p>
+            </div>
+            <span class="text-amber-400 text-base font-bold shrink-0">→</span>
+          </div>
+        </a>
+
+        <!-- 📺 【YouTube】長尺睡眠用BGM（30分〜8時間音源） -->
+        <a
+          href="https://www.youtube.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group block rounded-2xl border border-slate-800/90 bg-slate-900/80 p-4 shadow-md transition hover:border-indigo-500/50 hover:bg-slate-800/80 active:scale-98"
+        >
+          <div class="flex items-center gap-3.5">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-rose-600 text-2xl text-white shadow-md">
+              📺
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="rounded bg-rose-500/10 px-2 py-0.5 text-[10px] font-bold text-rose-400 border border-rose-500/20 mb-1 inline-block">
+                長尺・寝落ち用
+              </span>
+              <h2 class="text-sm font-bold text-white group-hover:text-indigo-300 transition truncate">
+                YouTube 睡眠用BGM・ソルフェジオ周波数
+              </h2>
+              <p class="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                528Hz・雨音・チベットシンギングボウルの癒やし音源
+              </p>
+            </div>
+            <span class="text-slate-400 group-hover:text-white text-base font-bold shrink-0">→</span>
+          </div>
+        </a>
+
+        <!-- 🛏️ 【快眠寝具】脳を冷やす快眠枕（ブレインスリープ / ヒツジのいらない枕） -->
+        <a
+          href="https://item.rakuten.co.jp/"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="group block rounded-2xl border border-slate-800/90 bg-slate-900/80 p-4 shadow-md transition hover:border-indigo-500/50 hover:bg-slate-800/80 active:scale-98"
+        >
+          <div class="flex items-center gap-3.5">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-600 text-2xl text-white shadow-md">
+              🛏️
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="rounded bg-indigo-500/10 px-2 py-0.5 text-[10px] font-bold text-indigo-400 border border-indigo-500/20 mb-1 inline-block">
+                愛用レビュー
+              </span>
+              <h2 class="text-sm font-bold text-white group-hover:text-indigo-300 transition truncate">
+                朝スッキリ起きられる「脳冷却」快眠枕
+              </h2>
+              <p class="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                瞑想の効果を最大化する通気性抜群の超熟睡ピロー
+              </p>
+            </div>
+            <span class="text-slate-400 group-hover:text-white text-base font-bold shrink-0">→</span>
+          </div>
+        </a>
+
+        <!-- 🌿 【お香・アロマ】瞑想が深まる香りのアイテム -->
+        <a
+          href="https://www.amazon.co.jp/"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="group block rounded-2xl border border-slate-800/90 bg-slate-900/80 p-4 shadow-md transition hover:border-indigo-500/50 hover:bg-slate-800/80 active:scale-98"
+        >
+          <div class="flex items-center gap-3.5">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-2xl text-white shadow-md">
+              🌿
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="rounded bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-400 border border-emerald-500/20 mb-1 inline-block">
+                リラックス習慣
+              </span>
+              <h2 class="text-sm font-bold text-white group-hover:text-emerald-300 transition truncate">
+                呼吸が深まる天然パロサント・お香厳選
+              </h2>
+              <p class="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                雑念が消えて集中できるおすすめの香りアイテム
+              </p>
+            </div>
+            <span class="text-slate-400 group-hover:text-white text-base font-bold shrink-0">→</span>
+          </div>
+        </a>
+
+        <!-- 💤 【アイマスク】完全遮光シルクアイマスク -->
+        <a
+          href="https://item.rakuten.co.jp/"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="group block rounded-2xl border border-slate-800/90 bg-slate-900/80 p-4 shadow-md transition hover:border-indigo-500/50 hover:bg-slate-800/80 active:scale-98"
+        >
+          <div class="flex items-center gap-3.5">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-purple-700 text-2xl text-white shadow-md">
+              💤
+            </div>
+            <div class="flex-1 min-w-0">
+              <h2 class="text-sm font-bold text-white group-hover:text-purple-300 transition truncate">
+                目元の圧迫感ゼロ！天然シルク遮光アイマスク
+              </h2>
+              <p class="text-xs text-slate-400 line-clamp-1 mt-0.5">
+                光を100%遮断してメラトニンの分泌を促す快眠グッズ
+              </p>
+            </div>
+            <span class="text-slate-400 group-hover:text-white text-base font-bold shrink-0">→</span>
+          </div>
+        </a>
+
+      </main>
+
+      <!-- 1分瞑想ミニコラム（滞在時間・信頼度UP） -->
+      <section class="mt-8 rounded-2xl border border-slate-800 bg-slate-900/40 p-4 text-xs text-slate-400 leading-relaxed">
+        <h3 class="font-bold text-slate-200 mb-1.5 flex items-center gap-1.5">
+          <span>💡</span> なぜ「1分だけ」で脳が休まるのか？
+        </h3>
+        <p>
+          息を「吐く時間」を吸う時間の2倍に伸ばすことで、自律神経の「副交感神経（リラックス）」が一瞬で優位になります。雑念が浮かんでも大丈夫。「あ、今考えごとをしてたな」と気づいて呼吸に戻るだけで、脳の疲労はリセットされます。
+        </p>
+      </section>
+
+      <!-- フッター -->
+      <footer class="mt-10 border-t border-slate-800/80 pt-6 text-center text-xs text-slate-500">
+        <p class="leading-relaxed">
+          ※当サイトはAmazonアソシエイトおよび各種アフィリエイトプログラムに参加しています。
+        </p>
+        <p class="mt-2 text-[11px] text-slate-600">
+          © {new Date().getFullYear()} 1分マインドフルネス（@1min_mindful）. All rights reserved.
+        </p>
+      </footer>
+    </div>
+
+    <!-- 呼吸サークルのCSSアニメーション & JS制御 -->
+    <style>
+      @keyframes breatheCycle {
+        0%, 100% {
+          width: 75px;
+          height: 75px;
+          opacity: 0.6;
+        }
+        25% {
+          /* 4秒吸う */
+          width: 115px;
+          height: 115px;
+          opacity: 1;
+        }
+        50% {
+          /* 4秒止める */
+          width: 115px;
+          height: 115px;
+          opacity: 0.9;
+        }
+        100% {
+          /* 8秒吐く */
+          width: 75px;
+          height: 75px;
+          opacity: 0.6;
+        }
+      }
+
+      .breathing-circle {
+        animation: breatheCycle 16s infinite ease-in-out;
+      }
+    </style>
+
+    <script>
+      const textElem = document.getElementById('breathing-text');
+      if (textElem) {
+        const updateText = () => {
+          const now = Date.now() % 16000;
+          if (now < 4000) {
+            textElem.innerText = '息を吸って';
+          } else if (now < 8000) {
+            textElem.innerText = '止めて…';
+          } else {
+            textElem.innerText = 'ゆっくり吐いて';
+          }
+        };
+        setInterval(updateText, 500);
+      }
+    </script>
+  </body>
+</html>
