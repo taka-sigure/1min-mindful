@@ -6,7 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://mago-gift.com',
+  site: 'https://taka-sigure.github.io',
+  base: '/1min-mindful',
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
