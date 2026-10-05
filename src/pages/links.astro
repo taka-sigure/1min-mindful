@@ -1,8 +1,9 @@
 ---
 import '../styles/global.css';
+import { profileData, linkItems } from '../data/links';
 
-const siteTitle = "1分マインドフルネス | @1min_mindful";
-const siteDescription = "1分マインドフルネス（@1min_mindful）のリンク集です。夜、寝る前に聴いているものや、普段使っている道具をまとめています。";
+const siteTitle = `${profileData.accountName} | ${profileData.handle}`;
+const siteDescription = `${profileData.accountName}（${profileData.handle}）のリンク集です。夜、寝る前に聴いているものや、普段使っている道具をまとめています。`;
 ---
 
 <!doctype html>
@@ -10,7 +11,7 @@ const siteDescription = "1分マインドフルネス（@1min_mindful）のリ�
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={import.meta.env.BASE_URL + "/favicon.svg"} />
     <title>{siteTitle}</title>
     <meta name="description" content={siteDescription} />
     <meta name="theme-color" content="#121316" />
@@ -24,10 +25,10 @@ const siteDescription = "1分マインドフルネス（@1min_mindful）のリ�
       <!-- ヘッダー -->
       <header class="text-center">
         <h1 class="text-base font-medium tracking-widest text-neutral-200">
-          1分マインドフルネス
+          {profileData.accountName}
         </h1>
         <p class="mt-1 text-xs text-neutral-500 tracking-wider">
-          @1min_mindful
+          {profileData.handle}
         </p>
 
         <!-- 呼吸サークル（静かなアニメーション） -->
@@ -45,116 +46,35 @@ const siteDescription = "1分マインドフルネス（@1min_mindful）のリ�
 
       <!-- リンク一覧（無印・Appleライクな引き算のデザイン） -->
       <main class="space-y-3">
-        
-        <!-- 夜の朗読・Audible -->
-        <a
-          href="https://www.amazon.co.jp/b?node=5843468051"
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
-        >
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
-                夜、寝る前に聴いているもの
-              </p>
-              <p class="mt-0.5 text-xs text-neutral-500">
-                眠れない夜の朗読・睡眠音声（Audible無料体験）
-              </p>
+        {linkItems.map((item) => (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
+                  {item.title}
+                </p>
+                <p class="mt-0.5 text-xs text-neutral-500">
+                  {item.description}
+                </p>
+              </div>
+              <span class="text-neutral-600 text-sm group-hover:text-neutral-400 transition ml-2">→</span>
             </div>
-            <span class="text-neutral-600 text-sm group-hover:text-neutral-400 transition ml-2">→</span>
-          </div>
-        </a>
-
-        <!-- YouTube長尺 -->
-        <a
-          href="https://www.youtube.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
-        >
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
-                長めの音（YouTube）
-              </p>
-              <p class="mt-0.5 text-xs text-neutral-500">
-                雨の音や静かな環境音を置いています
-              </p>
-            </div>
-            <span class="text-neutral-600 text-sm group-hover:text-neutral-400 transition ml-2">→</span>
-          </div>
-        </a>
-
-        <!-- お香・パロサント -->
-        <a
-          href="https://www.amazon.co.jp/"
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
-        >
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
-                焚いているお香・パロサント
-              </p>
-              <p class="mt-0.5 text-xs text-neutral-500">
-                気分を切り替えたいときに使っている香り
-              </p>
-            </div>
-            <span class="text-neutral-600 text-sm group-hover:text-neutral-400 transition ml-2">→</span>
-          </div>
-        </a>
-
-        <!-- 枕 -->
-        <a
-          href="https://item.rakuten.co.jp/"
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
-        >
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
-                使っている枕
-              </p>
-              <p class="mt-0.5 text-xs text-neutral-500">
-                頭に熱がこもらない通気性のいい枕
-              </p>
-            </div>
-            <span class="text-neutral-600 text-sm group-hover:text-neutral-400 transition ml-2">→</span>
-          </div>
-        </a>
-
-        <!-- アイマスク -->
-        <a
-          href="https://item.rakuten.co.jp/"
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
-        >
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
-                シルクのアイマスク
-              </p>
-              <p class="mt-0.5 text-xs text-neutral-500">
-                光をしっかり遮りたい夜に使っています
-              </p>
-            </div>
-            <span class="text-neutral-600 text-sm group-hover:text-neutral-400 transition ml-2">→</span>
-          </div>
-        </a>
-
+          </a>
+        ))}
       </main>
 
       <!-- フッター -->
       <footer class="mt-14 text-center">
         <p class="text-xs text-neutral-600 tracking-wider">
-          今日もおつかれさまでした。
+          {profileData.footerMessage}
         </p>
         <p class="mt-4 text-[10px] text-neutral-700">
-          ※各リンクはAmazonアソシエイト・楽天アフィリエイト等を利用しています
+          {profileData.disclaimer}
         </p>
       </footer>
     </div>
