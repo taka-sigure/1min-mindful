@@ -1,0 +1,119 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  category: string;
+  targetAge: string[];
+  heroImage?: string;
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  category,
+  targetAge,
+  heroImage,
+} = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(pubDate);
+
+const formattedUpdatedDate = updatedDate
+  ? new Intl.DateTimeFormat('ja-JP', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).format(updatedDate)
+  : null;
+---
+
+<BaseLayout title={title} description={description} article={true}>
+  <article class="mx-auto max-w-3xl px-4 py-8 sm:px-6 md:py-12">
+    <!-- パンくずリスト -->
+    <nav class="mb-6 flex items-center gap-2 text-xs text-slate-500">
+      <a href="/" class="hover:text-amber-600 transition">ホーム</a>
+      <span>&gt;</span>
+      <span class="font-medium text-slate-700">{category}</span>
+    </nav>
+
+    <!-- 記事ヘッダー -->
+    <header class="mb-8 border-b border-slate-200 pb-8">
+      <!-- カテゴリ & 年齢バッジ -->
+      <div class="mb-4 flex flex-wrap items-center gap-2">
+        <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">
+          {category}
+        </span>
+        {targetAge.map((age) => (
+          <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+            対象: {age}
+          </span>
+        ))}
+      </div>
+
+      <!-- タイトル -->
+      <h1 class="text-2xl font-black tracking-tight text-slate-900 leading-tight sm:text-3xl md:text-4xl">
+        {title}
+      </h1>
+
+      <!-- 日付情報 -->
+      <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-500">
+        <div class="flex items-center gap-1">
+          <span>📅 公開日:</span>
+          <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+        </div>
+        {formattedUpdatedDate && (
+          <div class="flex items-center gap-1 text-amber-700 font-medium">
+            <span>🔄 更新日:</span>
+            <time datetime={updatedDate?.toISOString()}>{formattedUpdatedDate}</time>
+          </div>
+        )}
+      </div>
+    </header>
+
+    <!-- 記事アイキャッチ（あれば） -->
+    {heroImage && (
+      <div class="mb-8 overflow-hidden rounded-2xl shadow-sm">
+        <img
+          src={heroImage}
+          alt={title}
+          class="h-auto w-full object-cover"
+          loading="eager"
+        />
+      </div>
+    )}
+
+    <!-- 記事本文（シニア向けに大きな文字とゆったりした行間） -->
+    <div class="article-content text-base sm:text-lg text-slate-800 leading-relaxed [&>p]:my-5 [&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:text-2xl [&>h2]:font-extrabold [&>h2]:text-slate-900 [&>h2]:border-l-4 [&>h2]:border-amber-500 [&>h2]:pl-3.5 [&>h3]:mt-8 [&>h3]:mb-3 [&>h3]:text-xl [&>h3]:font-bold [&>h3]:text-slate-900 [&>ul]:my-4 [&>ul]:list-disc [&>ul]:pl-6 [&>ol]:my-4 [&>ol]:list-decimal [&>ol]:pl-6 [&>blockquote]:my-6 [&>blockquote]:border-l-4 [&>blockquote]:border-slate-300 [&>blockquote]:pl-4 [&>blockquote]:italic">
+      <slot />
+    </div>
+
+    <!-- 記事下部のアドバイス -->
+    <div class="mt-14 rounded-2xl bg-amber-50/70 border border-amber-200 p-6">
+      <h3 class="font-bold text-amber-950 text-lg mb-2">
+        🎁 孫へのプレゼントで迷ったら
+      </h3>
+      <p class="text-sm text-slate-700 leading-relaxed">
+        事前に「お父さん・お母さん（息子・娘夫婦）」に今の好みや既に持っていないか確認するのが一番確実です。「これ買おうと思ってるんだけど、どうかな？」と商品リンクをLINEで送ってあげるのも大変喜ばれます。
+      </p>
+    </div>
+
+    <!-- ホームへ戻るボタン -->
+    <div class="mt-10 text-center">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 font-bold text-slate-700 shadow-sm hover:bg-slate-50 transition"
+      >
+        <span>← まごギフトNavi トップへ戻る</span>
+      </a>
+    </div>
+  </article>
+</BaseLayout>

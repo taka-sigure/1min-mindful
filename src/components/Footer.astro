@@ -1,0 +1,50 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-20 border-t border-slate-200 bg-white text-slate-600">
+  <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <!-- サイト概要 -->
+      <div>
+        <h3 class="text-lg font-bold text-slate-900">
+          まごギフトNavi（mago-gift.com）
+        </h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-500">
+          「孫が本気で喜んで、息子・娘夫婦にも気兼ねなく喜ばれる」をテーマに、テレビで話題の知育玩具や季節のプレゼント情報を発信する情報サイトです。
+        </p>
+      </div>
+
+      <!-- カテゴリ -->
+      <div>
+        <h4 class="text-sm font-bold text-slate-900">目的から探す</h4>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="/category/tv" class="hover:text-amber-600 transition">📺 テレビで話題のおもちゃ</a></li>
+          <li><a href="/category/educational" class="hover:text-amber-600 transition">🧩 知育玩具・絵本</a></li>
+          <li><a href="/category/events" class="hover:text-amber-600 transition">🎒 入学・入園・季節のイベント</a></li>
+          <li><a href="/age/0-1" class="hover:text-amber-600 transition">👶 0〜1歳向けギフト</a></li>
+          <li><a href="/age/2-3" class="hover:text-amber-600 transition">🧸 2〜3歳向けギフト</a></li>
+          <li><a href="/age/4-6" class="hover:text-amber-600 transition">🎈 4〜6歳向けギフト</a></li>
+          <li><a href="/age/elementary" class="hover:text-amber-600 transition">🎮 小学生向けギフト</a></li>
+        </ul>
+      </div>
+
+      <!-- アフィリエイト免責・コンプライアンス -->
+      <div>
+        <h4 class="text-sm font-bold text-slate-900">当サイトについて & 免責事項</h4>
+        <div class="mt-3 space-y-2 text-xs leading-relaxed text-slate-400">
+          <p>
+            当サイト「まごギフトNavi」は、Amazonアソシエイト・プログラムおよび楽天アフィリエイトの参加者です。適格販売により収入を得ています。
+          </p>
+          <p>
+            掲載している商品価格・在庫状況は記事公開時点のものであり、変動する可能性があります。ご購入の際はリンク先の販売元ページを必ずご確認ください。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-slate-100 pt-6 text-center text-xs text-slate-400">
+      <p>© {currentYear} まごギフトNavi (mago-gift.com). All rights reserved.</p>
+    </div>
+  </div>
+</footer>

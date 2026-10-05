@@ -1,0 +1,70 @@
+---
+interface Props {
+  sourceText: string; // 例: "テレビ番組『サタプラ（ひたすら試してランキング）』で紹介！"
+  itemName: string;
+  rakutenUrl: string;
+  amazonUrl: string;
+  price?: string;
+  badge?: string;
+}
+
+const {
+  sourceText,
+  itemName,
+  rakutenUrl,
+  amazonUrl,
+  price,
+  badge = 'テレビ・話題で急上昇',
+} = Astro.props;
+---
+
+<div class="my-6 rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 p-1 shadow-md">
+  <div class="rounded-[14px] bg-white p-5 md:p-6">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+      <span class="inline-flex items-center gap-1 rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-700">
+        🔥 {badge}
+      </span>
+      <span class="text-xs font-medium text-slate-500">
+        {sourceText}
+      </span>
+    </div>
+
+    <div class="mt-4">
+      <div class="text-xs text-slate-500 font-medium">お探しの商品はこちら（結論）</div>
+      <h3 class="mt-1 text-xl font-extrabold text-slate-900 leading-snug md:text-2xl">
+        {itemName}
+      </h3>
+      {price && (
+        <div class="mt-2 text-base font-bold text-rose-600">
+          参考定価: {price}
+        </div>
+      )}
+    </div>
+
+    <div class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+      <a
+        href={rakutenUrl}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        class="flex items-center justify-center gap-2 rounded-xl bg-[#bf0000] px-4 py-3 font-bold text-white shadow-sm transition hover:bg-[#a60000]"
+      >
+        <span>楽天市場で在庫を見る</span>
+        <span>→</span>
+      </a>
+
+      <a
+        href={amazonUrl}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        class="flex items-center justify-center gap-2 rounded-xl bg-[#ff9900] px-4 py-3 font-bold text-slate-900 shadow-sm transition hover:bg-[#e68a00]"
+      >
+        <span>Amazonで在庫を見る</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <p class="mt-2.5 text-center text-xs text-slate-400">
+      ※テレビ放映後は一時的に品薄・転売価格になる場合があります。定価での購入をおすすめします。
+    </p>
+  </div>
+</div>
