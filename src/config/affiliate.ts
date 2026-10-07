@@ -1,9 +1,9 @@
 // アフィリエイト設定・各ASPの識別子管理
 export const affiliateConfig = {
-  // バリューコマース: LinkSwitch用PID（管理画面から取得したPIDを設定すると自動リンク化が有効になります）
+  // バリューコマース: AutoMyLink/LinkSwitch用PID
   valueCommerce: {
     enabled: true,
-    pid: "YOUR_VALUECOMMERCE_PID", // あなたのバリューコマースPID
+    pid: "892722174", // まごギフトNaviのバリューコマースPID
   },
 
   // もしもアフィリエイト: かんたんリンク / アカウント設定
