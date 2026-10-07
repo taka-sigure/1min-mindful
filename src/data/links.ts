@@ -23,7 +23,7 @@ export const linkItems: LinkItem[] = [
   {
     title: "長めの音（YouTube）",
     description: "雨の音や静かな環境音を置いています",
-    url: "https://www.youtube.com/", // ※YouTubeチャンネルURLが分かれば差し替え可能です
+    url: "https://www.youtube.com/channel/UCohzqPmkM20EzE-zL94lNhQ",
     isExternal: true,
   },
   {
