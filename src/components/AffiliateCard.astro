@@ -3,6 +3,7 @@ interface Props {
   title: string;
   rakutenUrl: string;
   amazonUrl: string;
+  yahooUrl?: string;
   price?: string;
   imageUrl?: string;
   shopName?: string;
@@ -14,6 +15,7 @@ const {
   title,
   rakutenUrl,
   amazonUrl,
+  yahooUrl,
   price,
   imageUrl,
   shopName = '公式・認定取扱店',
@@ -64,27 +66,39 @@ const {
         </p>
       )}
 
-      <!-- 楽天 & Amazon 専用ボタン（50代以上が押しやすい特大・高コントラスト） -->
-      <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+      <!-- 楽天・Amazon・Yahoo! ショッピングモールボタン -->
+      <div class={`mt-5 grid grid-cols-1 gap-3 ${yahooUrl ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
         <a
           href={rakutenUrl}
           target="_blank"
           rel="noopener noreferrer nofollow"
-          class="flex flex-col items-center justify-center rounded-xl bg-[#bf0000] px-4 py-3.5 text-white shadow-sm transition hover:bg-[#a60000] active:scale-[0.98]"
+          class="flex flex-col items-center justify-center rounded-xl bg-[#bf0000] px-3 py-3.5 text-white shadow-sm transition hover:bg-[#a60000] active:scale-[0.98]"
         >
-          <span class="text-base font-bold tracking-wide">楽天市場で見る</span>
-          <span class="text-xs text-red-100 mt-0.5">ポイントが貯まる・使える</span>
+          <span class="text-sm md:text-base font-bold tracking-wide">楽天市場</span>
+          <span class="text-[11px] text-red-100 mt-0.5">ポイントが貯まる</span>
         </a>
 
         <a
           href={amazonUrl}
           target="_blank"
           rel="noopener noreferrer nofollow"
-          class="flex flex-col items-center justify-center rounded-xl bg-[#ff9900] px-4 py-3.5 text-slate-900 shadow-sm transition hover:bg-[#e68a00] active:scale-[0.98]"
+          class="flex flex-col items-center justify-center rounded-xl bg-[#ff9900] px-3 py-3.5 text-slate-900 shadow-sm transition hover:bg-[#e68a00] active:scale-[0.98]"
         >
-          <span class="text-base font-bold tracking-wide">Amazonで見る</span>
-          <span class="text-xs text-slate-800 mt-0.5">翌日お届け・在庫確認</span>
+          <span class="text-sm md:text-base font-bold tracking-wide">Amazon</span>
+          <span class="text-[11px] text-slate-800 mt-0.5">翌日お届け・在庫確認</span>
         </a>
+
+        {yahooUrl && (
+          <a
+            href={yahooUrl}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            class="flex flex-col items-center justify-center rounded-xl bg-[#ff0033] px-3 py-3.5 text-white shadow-sm transition hover:bg-[#d6002b] active:scale-[0.98]"
+          >
+            <span class="text-sm md:text-base font-bold tracking-wide">Yahoo!</span>
+            <span class="text-[11px] text-red-100 mt-0.5">PayPayポイントが貯まる</span>
+          </a>
+        )}
       </div>
 
       <p class="mt-3 text-center text-xs text-slate-400">

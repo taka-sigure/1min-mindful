@@ -1,6 +1,9 @@
 ---
 import '../styles/global.css';
-import { profileData, linkItems } from '../data/links';
+import { profileData, feedItems } from '../data/links';
+import LinkSwitch from '../components/LinkSwitch.astro';
+import LeadCta from '../components/LeadCta.astro';
+import ProductCard from '../components/ProductCard.astro';
 
 const siteTitle = `${profileData.accountName} | ${profileData.handle}`;
 const siteDescription = `${profileData.accountName}（${profileData.handle}）のリンク集です。夜、寝る前に聴いているものや、普段使っている道具をまとめています。`;
@@ -18,6 +21,9 @@ const siteDescription = `${profileData.accountName}（${profileData.handle}）�
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
     <meta property="og:type" content="website" />
+
+    <!-- ValueCommerce LinkSwitch (自動リンク化) -->
+    <LinkSwitch />
   </head>
   <body class="min-h-screen bg-[#111215] text-neutral-300 antialiased font-sans selection:bg-neutral-800 selection:text-neutral-200">
     <div class="mx-auto max-w-sm px-5 py-12">
@@ -44,28 +50,57 @@ const siteDescription = `${profileData.accountName}（${profileData.handle}）�
         </div>
       </header>
 
-      <!-- リンク一覧（無印・Appleライクな引き算のデザイン） -->
-      <main class="space-y-3">
-        {linkItems.map((item) => (
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
-          >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
-                  {item.title}
-                </p>
-                <p class="mt-0.5 text-xs text-neutral-500">
-                  {item.description}
-                </p>
-              </div>
-              <span class="text-neutral-600 text-sm group-hover:text-neutral-400 transition ml-2">→</span>
-            </div>
-          </a>
-        ))}
+      <!-- リンク一覧（リード案件・3大モール物販・通常リンクを最適化） -->
+      <main class="space-y-4">
+        {feedItems.map((item) => {
+          if (item.type === 'lead') {
+            return (
+              <LeadCta
+                title={item.title}
+                description={item.description}
+                tagline={item.tagline}
+                microCopy={item.microCopy}
+                ctaText={item.ctaText}
+                affiliateUrl={item.affiliateUrl}
+                highlight={item.highlight}
+                badge={item.badge}
+              />
+            );
+          } else if (item.type === 'product') {
+            return (
+              <ProductCard
+                title={item.title}
+                description={item.description}
+                price={item.price}
+                amazonUrl={item.amazonUrl}
+                rakutenUrl={item.rakutenUrl}
+                yahooUrl={item.yahooUrl}
+                badge={item.badge}
+              />
+            );
+          } else {
+            return (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
+                      {item.title}
+                    </p>
+                    <p class="mt-0.5 text-xs text-neutral-500">
+                      {item.description}
+                    </p>
+                  </div>
+                  <span class="text-neutral-600 text-sm group-hover:text-neutral-400 transition ml-2">→</span>
+                </div>
+              </a>
+            );
+          }
+        })}
       </main>
 
       <!-- フッター -->
