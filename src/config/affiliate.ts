@@ -1,24 +1,38 @@
-// アフィリエイト設定・各ASPの識別子管理
+// アフィリエイト設定・各ASPの識別子管理（「1分マインドフルネス」公式登録ID）
 export const affiliateConfig = {
-  // バリューコマース: AutoMyLink/LinkSwitch用PID
+  // バリューコマース: LinkSwitch / サイトID: 3783908
   valueCommerce: {
     enabled: true,
-    pid: "892722174", // まごギフトNaviのバリューコマースPID
+    siteId: "3783908",
+    pid: "892722183", // 1分マインドフルネス専用PID
   },
 
-  // もしもアフィリエイト: かんたんリンク / アカウント設定
+  // もしもアフィリエイト: メディアID: 691751
   moshimo: {
     enabled: true,
-    aId: "YOUR_MOSHIMO_A_ID", // もしもアフィリエイトID
+    shopSiteId: "691751",
+    // 提携済みプロモーションID
+    rakuten: {
+      promotionId: "54",
+      aId: "5837465", // 楽天市場専用a_id
+    },
+    amazon: {
+      promotionId: "170",
+      status: "pending", // 審査完了後にa_id発行
+    },
   },
 
-  // A8.net: メディアID等
+  // A8.net: メディアID / サイトID
   a8: {
     enabled: true,
+    mediaId: "a19112417395",
+    siteId: "007", // 1分マインドフルネス
   },
 
   // afb: アカウント設定
   afb: {
     enabled: true,
+    status: "applied", // 審査待ち（即日〜1営業日）
   },
 };
+

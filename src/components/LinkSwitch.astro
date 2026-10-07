@@ -12,9 +12,7 @@ const isConfigured = pid && pid !== 'YOUR_VALUECOMMERCE_PID';
 {isConfigured && (
   <>
     <!-- ValueCommerce AutoMyLink / LinkSwitch -->
-    <script type="text/javascript" is:inline define:vars={{ pid }}>
-      var vc_pid = pid;
-    </script>
+    <script type="text/javascript" is:inline set:html={`var vc_pid = "${pid}";`}></script>
     <script type="text/javascript" src="//aml.valuecommerce.com/vcdal.js" async is:inline></script>
   </>
 )}
