@@ -43,13 +43,13 @@ export const linkItems: LinkItem[] = [
   {
     title: "使っている枕",
     description: "頭に熱がこもらない通気性のいい枕",
-    url: createMoshimoRakutenUrl("https://search.rakuten.co.jp/search/mall/%E9%80%9A%E6%B0%97%E6%80%A7+%E6%9E%95/"),
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("通気性 枕")}&tag=${affiliateConfig.amazon.tag}`,
     isExternal: true,
   },
   {
     title: "シルクのアイマスク",
     description: "光をしっかり遮りたい夜に使っています",
-    url: createMoshimoRakutenUrl("https://search.rakuten.co.jp/search/mall/%E3%82%B7%E3%83%AB%E3%82%AF+%E3%82%A2%E3%82%A4%E3%83%9E%E3%82%B9%E3%82%AF+%E9%81%AE%E5%85%89/"),
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("シルク アイマスク 遮光")}&tag=${affiliateConfig.amazon.tag}`,
     isExternal: true,
   },
 ];
