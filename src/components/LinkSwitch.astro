@@ -11,10 +11,10 @@ const isConfigured = pid && pid !== 'YOUR_VALUECOMMERCE_PID';
 
 {isConfigured && (
   <>
-    <!-- ValueCommerce LinkSwitch: 通常のリンクをクリック時に自動でアフィリエイトリンクに変換 -->
+    <!-- ValueCommerce AutoMyLink / LinkSwitch -->
     <script type="text/javascript" is:inline define:vars={{ pid }}>
       var vc_pid = pid;
     </script>
-    <script type="text/javascript" src="//as.valuecommerce.com/as.js" async is:inline></script>
+    <script type="text/javascript" src="//aml.valuecommerce.com/vcdal.js" async is:inline></script>
   </>
 )}
