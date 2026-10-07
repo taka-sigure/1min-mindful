@@ -7,6 +7,12 @@ export const affiliateConfig = {
     pid: "892722183", // 1分マインドフルネス専用PID
   },
 
+  // Amazonアソシエイト設定
+  amazon: {
+    enabled: true,
+    tag: "takasigure101-22", // AmazonアソシエイトID
+  },
+
   // もしもアフィリエイト: メディアID: 691751
   moshimo: {
     enabled: true,
