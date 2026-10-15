@@ -23,15 +23,27 @@ const createMoshimoRakutenUrl = (targetUrl: string) => {
 
 export const linkItems: LinkItem[] = [
   {
-    title: "夜、寝る前に聴いているもの",
-    description: "眠れない夜の朗読・静かな雨の音（Audible）",
-    url: `https://www.amazon.co.jp/audible?tag=${affiliateConfig.amazon.tag}`,
+    title: "目元を温めるホットアイマスク",
+    description: "画面を見続けた夜、目の奥をじんわり緩める温熱マスク",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("ホットアイマスク 睡眠 温熱")}&tag=${affiliateConfig.amazon.tag}`,
     isExternal: true,
   },
   {
-    title: "長めの音（YouTube）",
-    description: "雨の音や静かな環境音を置いています",
-    url: "https://www.youtube.com/@1min_mindful",
+    title: "シルクのアイマスク",
+    description: "光をしっかり遮って、目を休めたい夜に使っています",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("シルク アイマスク 遮光")}&tag=${affiliateConfig.amazon.tag}`,
+    isExternal: true,
+  },
+  {
+    title: "夜の小さな間接照明",
+    description: "寝る前、部屋の明かりを落として目を休める暖色ライト",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("間接照明 暖色 ベッドサイド")}&tag=${affiliateConfig.amazon.tag}`,
+    isExternal: true,
+  },
+  {
+    title: "夜、寝る前に聴いているもの",
+    description: "眠れない夜の朗読・静かな雨の音（Audible）",
+    url: `https://www.amazon.co.jp/audible?tag=${affiliateConfig.amazon.tag}`,
     isExternal: true,
   },
   {
@@ -47,9 +59,9 @@ export const linkItems: LinkItem[] = [
     isExternal: true,
   },
   {
-    title: "シルクのアイマスク",
-    description: "光をしっかり遮りたい夜に使っています",
-    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("シルク アイマスク 遮光")}&tag=${affiliateConfig.amazon.tag}`,
+    title: "長めの音（YouTube）",
+    description: "雨の音や静かな環境音を置いています",
+    url: "https://www.youtube.com/@1min_mindful",
     isExternal: true,
   },
 ];
