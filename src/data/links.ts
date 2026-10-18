@@ -23,21 +23,21 @@ const createMoshimoRakutenUrl = (targetUrl: string) => {
 
 export const linkItems: LinkItem[] = [
   {
-    title: "目元を温めるホットアイマスク",
-    description: "画面を見続けた夜、目の奥をじんわり緩める温熱マスク",
-    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("ホットアイマスク 睡眠 温熱")}&tag=${affiliateConfig.amazon.tag}`,
+    title: "目元を温めるホットアイマスク・アイウォーマー",
+    description: "画面を見続けた夜、目の奥をじんわり緩める温熱マスク（nerugoo / NIPLUX）",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("ホットアイマスク 充電式 NIPLUX nerugoo")}&tag=${affiliateConfig.amazon.tag}`,
     isExternal: true,
   },
   {
-    title: "シルクのアイマスク",
-    description: "光をしっかり遮って、目を休めたい夜に使っています",
-    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("シルク アイマスク 遮光")}&tag=${affiliateConfig.amazon.tag}`,
+    title: "シルク・ふんわり遮光アイマスク",
+    description: "光をやさしく遮って、目を休めたい夜に使っています",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("シルク アイマスク 遮光 洗える")}&tag=${affiliateConfig.amazon.tag}`,
     isExternal: true,
   },
   {
-    title: "夜の小さな間接照明",
-    description: "寝る前、部屋の明かりを落として目を休める暖色ライト",
-    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("間接照明 暖色 ベッドサイド")}&tag=${affiliateConfig.amazon.tag}`,
+    title: "水面波紋のアンビエントライト・間接照明",
+    description: "寝る前、部屋の明かりを落として水面のゆらぎで目を休めるライト",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("水面 波紋 ライト 間接照明 ベッドサイド")}&tag=${affiliateConfig.amazon.tag}`,
     isExternal: true,
   },
   {
@@ -47,21 +47,27 @@ export const linkItems: LinkItem[] = [
     isExternal: true,
   },
   {
+    title: "首・肩を休めるタオル枕・無重力ジェル枕",
+    description: "首の高さにやさしく馴染む今治睡眠用タオル枕・通気性のいいジェル枕",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("今治睡眠用タオル2 無重力 ジェル枕")}&tag=${affiliateConfig.amazon.tag}`,
+    isExternal: true,
+  },
+  {
+    title: "焚いているお香・真鍮ガラスのお香立て",
+    description: "考えごとを切り替えて、夜の静けさに入るための香り（香木・ラベンダー）",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("お香 白檀 ラベンダー 真鍮 ガラス お香立て")}&tag=${affiliateConfig.amazon.tag}`,
+    isExternal: true,
+  },
+  {
+    title: "湯船でゆるむ国産エプソムソルト",
+    description: "体の芯まで疲れが残る夜、ゆっくり温まるバスタイムに",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("国産 エプソムソルト 入浴剤")}&tag=${affiliateConfig.amazon.tag}`,
+    isExternal: true,
+  },
+  {
     title: "夜、寝る前に聴いているもの",
     description: "眠れない夜の朗読・静かな雨の音（Audible）",
     url: `https://www.amazon.co.jp/audible?tag=${affiliateConfig.amazon.tag}`,
-    isExternal: true,
-  },
-  {
-    title: "焚いているお香・パロサント",
-    description: "気持ちを切り替えたいときに使っている香り",
-    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("パロサント")}&tag=${affiliateConfig.amazon.tag}`,
-    isExternal: true,
-  },
-  {
-    title: "使っている枕",
-    description: "頭に熱がこもらない通気性のいい枕",
-    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("通気性 枕")}&tag=${affiliateConfig.amazon.tag}`,
     isExternal: true,
   },
   {
@@ -71,3 +77,4 @@ export const linkItems: LinkItem[] = [
     isExternal: true,
   },
 ];
+
