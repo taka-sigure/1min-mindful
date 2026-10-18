@@ -41,6 +41,12 @@ export const linkItems: LinkItem[] = [
     isExternal: true,
   },
   {
+    title: "夜のガラス製アロマキャンドル",
+    description: "画面を閉じたあと、揺れる灯りと香りで目を休める時間に",
+    url: `https://www.amazon.co.jp/s?k=${encodeURIComponent("アロマキャンドル ガラス リラックス")}&tag=${affiliateConfig.amazon.tag}`,
+    isExternal: true,
+  },
+  {
     title: "夜、寝る前に聴いているもの",
     description: "眠れない夜の朗読・静かな雨の音（Audible）",
     url: `https://www.amazon.co.jp/audible?tag=${affiliateConfig.amazon.tag}`,
