@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -8,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://taka-sigure.github.io',
   base: '/1min-mindful',
-  integrations: [mdx(), sitemap()],
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },
