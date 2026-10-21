@@ -8,6 +8,10 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+The site base path is `/1min-mindful`. Open `http://127.0.0.1:4321/1min-mindful/`. `http://127.0.0.1:4321/` is a 404.
+
+Cloud Agent `start` already runs `npm run dev -- --background --host --port 4321` and waits until that URL responds. If `npm run astro -- dev status` reports a running server, do not start a second one.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
