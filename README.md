@@ -1,13 +1,13 @@
 # 1分マインドフルネス リンク集
 
-TikTok [@1min_mindful](https://www.tiktok.com/@1min_mindful) のバイオリンクです。  
+TikTok [@1min_mindful](https://www.tiktok.com/@1min_mindful) / YouTube [@1min_mindful](https://www.youtube.com/@1min_mindful) のバイオリンクです。  
 公開URL: https://taka-sigure.github.io/1min-mindful/
 
 商品リンクは Amazon アソシエイト（タグ `takasigure101-22`）です。タグの値は `src/config/affiliate.ts` の `affiliateConfig.amazon.tag` で管理し、リンクごとに手書きしません。
 
 ## 商品リンクを個別ページに差し替える
 
-文言とリンク先は `src/data/links.ts` の `linkItems` です。初期状態は検索結果へのリンクで、ASIN や商品URLはこのリポジトリでは決めていません。商品が決まったら、その項目に `asin` か `productUrl` を足してください。どちらも空なら、これまでどおり `searchQuery` の検索URLになります。
+文言とリンク先は `src/data/links.ts` の `linkItems` です。初期状態は1商品ごとの検索結果へのリンクで、商品が決まったら、その項目に `asin` か `productUrl` を足してください。どちらも空なら、これまでどおり `searchQuery` の検索URLになります。
 
 優先順位:
 
@@ -20,9 +20,11 @@ TikTok [@1min_mindful](https://www.tiktok.com/@1min_mindful) のバイオリン�
 
 ```ts
 {
-  title: "ホットアイマスク・アイウォーマー",
-  description: "画面を見続けた夜に、目元へあてておく温かいマスク（nerugoo / NIPLUX）",
-  searchQuery: "ホットアイマスク 充電式 NIPLUX nerugoo",
+  id: "nerugoo-eye-mask",
+  category: "目元を休める",
+  title: "nerugoo 充電式ホットアイマスク",
+  description: "画面を見続けた夜、シルクの肌触りで目の奥をじんわり温めるマスク",
+  searchQuery: "nerugoo ホットアイマスク 充電式",
   // 商品が決まったら、どちらか一方のコメントを外す（asin が優先）
   // asin: "B0XXXXXXXX",
   // productUrl: "https://www.amazon.co.jp/dp/B0XXXXXXXX",
@@ -47,3 +49,11 @@ TikTok [@1min_mindful](https://www.tiktok.com/@1min_mindful) のバイオリン�
 | `npm run preview` | ビルド結果をローカルで確認                  |
 
 サイトのベースパスは `/1min-mindful` です。ローカルでは `http://localhost:4321/1min-mindful/` を開いてください。
+
+## 動画生成パイプライン（TikTok / Shorts 60秒縦型動画）
+
+- `scripts/products_catalog.json`: TikTok Shop ショーケース 11商品の価格・検索クエリ・特徴を一元管理するマスターデータ
+- `scripts/lib/video_common.py`: FFmpeg + Pillow による字幕レンダリング・素材パス解決（`assets/` 優先、`/tmp` フォールバック、自動プレースホルダー生成）
+- `scripts/render_safe_profile_videos.py`: プロフィールリンク誘導型の静かな60秒動画（4本）
+- `scripts/render_eyecare_videos.py`: 目元ケア特化の60秒動画（3本）
+- `scripts/render_all_showcase_videos.py`: ショーケース全11商品の60秒動画一括生成

@@ -24,7 +24,7 @@ export const affiliateConfig = {
     },
     amazon: {
       promotionId: "170",
-      status: "pending", // 審査完了後にa_id発行
+      status: "pending", // 審査完了後にa_id発行（現在は公式Amazonアソシエイトtagを使用）
     },
   },
 
@@ -38,7 +38,14 @@ export const affiliateConfig = {
   // afb: アカウント設定
   afb: {
     enabled: true,
-    status: "applied", // 審査待ち（即日〜1営業日）
+    status: "applied",
+  },
+
+  // アクセス解析・クリック計測設定（GA4 / Microsoft Clarity）
+  analytics: {
+    enabled: true,
+    gaMeasurementId: import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "",
+    clarityProjectId: import.meta.env.PUBLIC_CLARITY_ID || "ymb1g6h2sq",
   },
 };
 

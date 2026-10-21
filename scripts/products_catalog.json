@@ -1,0 +1,116 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-10-22",
+  "products": [
+    {
+      "id": "01_nerugoo",
+      "lpItemId": "nerugoo-eyemask",
+      "tiktokProductId": "1731783656634156051",
+      "name": "nerugoo 充電式ホットアイマスク（リバティ・ギフトBOX付）",
+      "priceYen": 4480,
+      "priceLabel": "4,480円（税込・送料無料）",
+      "videoFile": "product_intro_01_nerugoo_eyemask.mp4",
+      "galleryDir": "gallery/01_1731783656634156051"
+    },
+    {
+      "id": "02_epsom_salt",
+      "lpItemId": "epsom-salt",
+      "tiktokProductId": "1732385911955818451",
+      "name": "アースコンシャス 国産エプソムソルト 3kg（約30回分）",
+      "priceYen": 1980,
+      "priceLabel": "1,980円（税込・送料無料）",
+      "videoFile": "product_intro_02_epsom_salt.mp4",
+      "galleryDir": "gallery/02_1732385911955818451"
+    },
+    {
+      "id": "03_water_wave_light",
+      "lpItemId": "water-wave-light",
+      "tiktokProductId": "1734226398019290470",
+      "name": "水面波紋 アンビエントプロジェクターライト",
+      "priceYen": 2451,
+      "priceLabel": "2,451円（税込・送料無料）",
+      "videoFile": "product_intro_03_water_wave_light.mp4",
+      "galleryDir": "gallery/03_1734226398019290470"
+    },
+    {
+      "id": "04_sozo_incense",
+      "lpItemId": "sozo-incense",
+      "tiktokProductId": "1736151959476995939",
+      "name": "SOZO お香「穏 〜ON〜」（ラベンダー / ジャスミン）",
+      "priceYen": 2200,
+      "priceLabel": "2,200円（税込・送料無料）",
+      "videoFile": "product_intro_04_sozo_incense.mp4",
+      "galleryDir": "gallery/04_1736151959476995939"
+    },
+    {
+      "id": "05_imabari_pillow",
+      "lpItemId": "imabari-towel-pillow",
+      "tiktokProductId": "1732322235734984529",
+      "name": "今治睡眠用タオル2 ピローレスネックフィットタオル（専用ポール付）",
+      "priceYen": 6600,
+      "priceLabel": "6,600円（税込・送料無料）",
+      "videoFile": "product_intro_05_imabari_towel_pillow.mp4",
+      "galleryDir": "gallery/05_1732322235734984529"
+    },
+    {
+      "id": "06_blackout_eyemask",
+      "lpItemId": "blackout-eyemask",
+      "tiktokProductId": "1734626745675515314",
+      "name": "睡眠科医監修 99.9%遮光 ふんわり快眠アイマスク",
+      "priceYen": 1680,
+      "priceLabel": "1,680円（税込・送料無料）",
+      "videoFile": "product_intro_06_blackout_eyemask.mp4",
+      "galleryDir": "gallery/06_1734626745675515314"
+    },
+    {
+      "id": "07_niplux_eyerelax",
+      "lpItemId": "niplux-eyerelax",
+      "tiktokProductId": "1732130154323478208",
+      "name": "NIPLUX EYE RELAX S アイウォーマー",
+      "priceYen": 9801,
+      "priceLabel": "9,801円（税込・送料無料）",
+      "videoFile": "product_intro_07_niplux_eyerelax.mp4",
+      "galleryDir": "gallery/07_1732130154323478208"
+    },
+    {
+      "id": "08_zero_gravity_pillow",
+      "lpItemId": "zero-gravity-pillow",
+      "tiktokProductId": "1731596104749516239",
+      "name": "無重力ジェル枕 TPE素材（専用カバー付）",
+      "priceYen": 5778,
+      "priceLabel": "5,778円（税込・送料無料）",
+      "videoFile": "product_intro_08_zero_gravity_pillow.mp4",
+      "galleryDir": "gallery/08_1731596104749516239"
+    },
+    {
+      "id": "09_brass_incense_holder",
+      "lpItemId": "brass-incense-holder",
+      "tiktokProductId": "1734621162131982154",
+      "name": "真鍮 × 耐熱ガラス 瓢箪お香立て（防風・灰飛散防止）",
+      "priceYen": 1489,
+      "priceLabel": "1,489円（税込・送料無料）",
+      "videoFile": "product_intro_09_brass_incense_holder.mp4",
+      "galleryDir": "gallery/09_1734621162131982154"
+    },
+    {
+      "id": "10_sozo_three_fragrant_woods",
+      "lpItemId": "sozo-incense",
+      "tiktokProductId": "1736151959545546595",
+      "name": "SOZO お香「三大香木」（沈丁花・くちなし・金木犀）",
+      "priceYen": 1700,
+      "priceLabel": "1,700円（税込・送料無料）",
+      "videoFile": "product_intro_10_sozo_three_fragrant_woods.mp4",
+      "galleryDir": "gallery/10_1736151959545546595"
+    },
+    {
+      "id": "11_glass_aroma_candle",
+      "lpItemId": "glass-aroma-candle",
+      "tiktokProductId": "1733361545697461699",
+      "name": "エレガントなガラス製アロマキャンドル（化粧箱付）",
+      "priceYen": 990,
+      "priceLabel": "990円（税込）",
+      "videoFile": "product_intro_11_glass_aroma_candle.mp4",
+      "galleryDir": "gallery/11_1733361545697461699"
+    }
+  ]
+}

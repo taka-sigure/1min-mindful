@@ -1,10 +1,31 @@
 ---
 import '../styles/global.css';
-import { profileData, linkItems } from '../data/links';
+import { profileData, linkItems, linkCategories } from '../data/links';
+import { affiliateConfig } from '../config/affiliate';
 import LinkSwitch from './LinkSwitch.astro';
+
+interface Props {
+  canonicalPath?: string;
+}
+
+const { canonicalPath = '/' } = Astro.props;
+
+const siteOrigin = Astro.site ? Astro.site.origin : 'https://taka-sigure.github.io';
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const normalizedPath = canonicalPath === '/' ? '/' : `${canonicalPath.replace(/\/$/, '')}/`;
+const canonicalUrl = `${siteOrigin}${baseUrl}${normalizedPath}`;
+const ogImageUrl = `${siteOrigin}${baseUrl}/ogp.png`;
 
 const siteTitle = `${profileData.accountName} | ${profileData.handle}`;
 const siteDescription = `${profileData.accountName}（${profileData.handle}）のリンク集です。夜、寝る前に聴いているものや、普段使っている道具をまとめています。`;
+
+const groupedLinks = linkCategories.map((category) => ({
+  category,
+  items: linkItems.filter((item) => item.category === category),
+}));
+
+const clarityId = affiliateConfig.analytics.clarityProjectId;
+const ga4Id = affiliateConfig.analytics.ga4MeasurementId;
 ---
 
 <!doctype html>
@@ -12,32 +33,71 @@ const siteDescription = `${profileData.accountName}（${profileData.handle}）�
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href={import.meta.env.BASE_URL + "/favicon.svg"} />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <link rel="canonical" href={canonicalUrl} />
     <title>{siteTitle}</title>
     <meta name="description" content={siteDescription} />
-    <meta name="theme-color" content="#121316" />
+    <meta name="theme-color" content="#111215" />
+
+    <!-- Open Graph / Twitter Card -->
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={profileData.accountName} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${profileData.accountName} - 夜、頭が静かになる1分を。`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- ValueCommerce LinkSwitch (デザインを一切崩さず裏側で自動アフィリエイト化) -->
     <LinkSwitch />
+
+    <!-- Microsoft Clarity -->
+    {clarityId && (
+      <script is:inline define:vars={{ clarityId }}>
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", clarityId);
+      </script>
+    )}
+
+    <!-- Google Analytics 4 (任意設定時のみ有効化) -->
+    {ga4Id && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script is:inline define:vars={{ ga4Id }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', ga4Id);
+        </script>
+      </>
+    )}
   </head>
   <body class="min-h-screen bg-[#111215] text-neutral-300 antialiased font-sans selection:bg-neutral-800 selection:text-neutral-200">
     <div class="mx-auto max-w-sm px-5 py-12">
-      
       <!-- ヘッダー -->
       <header class="text-center">
         <h1 class="text-base font-medium tracking-widest text-neutral-200">
           {profileData.accountName}
         </h1>
-        <p class="mt-1 text-xs text-neutral-500 tracking-wider">
+        <p class="mt-1 text-xs text-neutral-400 tracking-wider">
           {profileData.handle}
         </p>
 
         <!-- ステマ規制: ファーストビューで広告だと分かる表示 -->
-        <p class="mt-4 flex items-center justify-center gap-2 text-xs tracking-wide text-neutral-200">
-          <span class="rounded border border-neutral-400 px-2 py-0.5 text-xs font-medium tracking-widest text-neutral-100">
+        <p class="mt-4 flex items-center justify-center gap-2 text-xs tracking-wide text-neutral-300">
+          <span class="rounded border border-neutral-500 px-2 py-0.5 text-xs font-medium tracking-widest text-neutral-200">
             {profileData.adLabel}
           </span>
           <span>{profileData.adNotice}</span>
@@ -46,43 +106,73 @@ const siteDescription = `${profileData.accountName}（${profileData.handle}）�
         <!-- 呼吸サークル（静かなアニメーション） -->
         <div class="mt-8 mb-10 flex flex-col items-center justify-center">
           <div class="relative flex h-28 w-28 items-center justify-center">
-            <div class="breathing-circle rounded-full border border-neutral-700/60 bg-neutral-800/30 flex items-center justify-center shadow-sm">
-              <span id="breathing-text" class="text-xs text-neutral-400 tracking-widest select-none">すって</span>
+            <div
+              id="breathing-circle"
+              class="breathing-circle h-24 w-24 rounded-full border border-neutral-700/60 bg-neutral-800/30 flex items-center justify-center shadow-sm"
+            >
+              <span
+                id="breathing-text"
+                aria-live="off"
+                class="text-xs text-neutral-300 tracking-widest select-none"
+              >
+                すって
+              </span>
             </div>
           </div>
-          <p class="mt-3 text-[11px] text-neutral-600 tracking-wider">
+          <p class="mt-3 text-[11px] text-neutral-400 tracking-wider">
             円に合わせて、ゆっくり呼吸
           </p>
         </div>
       </header>
 
       <!-- リンク一覧（無印・Appleライクな引き算のミニマルデザイン） -->
-      <main class="space-y-3">
-        {linkItems.map((item) => (
-          <a
-            href={item.href}
-            target="_blank"
-            rel={item.isAffiliate ? "noopener noreferrer nofollow sponsored" : "noopener noreferrer nofollow"}
-            class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
-          >
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
-                  {item.title}
-                </p>
-                <p class="mt-0.5 text-xs text-neutral-500">
-                  {item.description}
-                </p>
-              </div>
-              <span class="text-neutral-600 text-sm group-hover:text-neutral-400 transition ml-2">→</span>
-            </div>
-          </a>
+      <main class="space-y-8" aria-label="夜のリラックスアイテムと音声リンク">
+        {groupedLinks.map((group) => (
+          <section class="space-y-2.5" aria-label={group.category}>
+            <h2 class="px-1 text-[11px] font-normal tracking-widest text-neutral-400">
+              {group.category}
+            </h2>
+            <ul role="list" class="space-y-2.5">
+              {group.items.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel={item.isAffiliate ? "noopener noreferrer nofollow sponsored" : "noopener noreferrer nofollow"}
+                    data-track-cta="item_click"
+                    data-item-id={item.id}
+                    data-item-title={item.title}
+                    data-item-category={item.category}
+                    data-mall={item.isAffiliate ? "amazon" : "external"}
+                    class="group block rounded-xl border border-neutral-800/80 bg-neutral-900/60 p-4 transition duration-200 hover:border-neutral-700 hover:bg-neutral-900 active:scale-[0.99]"
+                  >
+                    <div class="flex items-center justify-between gap-3">
+                      <div>
+                        <p class="text-[13px] font-medium text-neutral-200 group-hover:text-white transition">
+                          {item.title}
+                        </p>
+                        <p class="mt-1 text-xs text-neutral-400 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                      <span
+                        aria-hidden="true"
+                        class="shrink-0 text-neutral-500 text-sm group-hover:text-neutral-300 transition"
+                      >
+                        →
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
       </main>
 
       <!-- フッター -->
       <footer class="mt-14 text-center">
-        <p class="text-xs text-neutral-600 tracking-wider">
+        <p class="text-xs text-neutral-400 tracking-wider">
           {profileData.footerMessage}
         </p>
         <p class="mx-auto mt-5 max-w-xs text-xs leading-relaxed text-neutral-400">
@@ -91,51 +181,106 @@ const siteDescription = `${profileData.accountName}（${profileData.handle}）�
       </footer>
     </div>
 
-    <!-- 呼吸アニメーション（静かでなめらかな挙動） -->
+    <!-- 呼吸アニメーション（compositorスレッドのみで動作するtransform/opacityアニメーション） -->
     <style>
       @keyframes breatheSmooth {
         0%, 100% {
-          width: 70px;
-          height: 70px;
+          transform: scale(0.72);
           opacity: 0.5;
         }
         25% {
-          width: 104px;
-          height: 104px;
-          opacity: 0.9;
+          transform: scale(1.08);
+          opacity: 0.92;
         }
         50% {
-          width: 104px;
-          height: 104px;
-          opacity: 0.85;
-        }
-        100% {
-          width: 70px;
-          height: 70px;
-          opacity: 0.5;
+          transform: scale(1.08);
+          opacity: 0.86;
         }
       }
 
       .breathing-circle {
+        will-change: transform, opacity;
         animation: breatheSmooth 16s infinite ease-in-out;
+
+        @media (prefers-reduced-motion: reduce) {
+          animation: none;
+          transform: scale(0.95);
+          opacity: 0.8;
+        }
       }
     </style>
 
     <script>
+      const circleElem = document.getElementById('breathing-circle');
       const textElem = document.getElementById('breathing-text');
-      if (textElem) {
+      const CYCLE_MS = 16000;
+      const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      if (circleElem && textElem) {
+        const startOrigin = performance.now();
+
+        const getElapsedInCycle = (): number => {
+          const anim = circleElem.getAnimations?.()[0];
+          if (anim && typeof anim.currentTime === 'number') {
+            return ((anim.currentTime % CYCLE_MS) + CYCLE_MS) % CYCLE_MS;
+          }
+          return (performance.now() - startOrigin) % CYCLE_MS;
+        };
+
+        let lastPhase = 'すって';
         const updateText = () => {
-          const now = Date.now() % 16000;
-          if (now < 4000) {
-            textElem.innerText = 'すって';
-          } else if (now < 8000) {
-            textElem.innerText = 'とめて';
-          } else {
-            textElem.innerText = 'はいて';
+          if (reducedMotionQuery.matches) {
+            if (lastPhase !== 'ゆっくり呼吸') {
+              textElem.textContent = 'ゆっくり呼吸';
+              lastPhase = 'ゆっくり呼吸';
+            }
+            return;
+          }
+
+          const phaseMs = getElapsedInCycle();
+          const nextPhase =
+            phaseMs < 4000 ? 'すって' : phaseMs < 8000 ? 'とめて' : 'はいて';
+
+          if (nextPhase !== lastPhase) {
+            textElem.textContent = nextPhase;
+            lastPhase = nextPhase;
           }
         };
-        setInterval(updateText, 500);
+
+        updateText();
+        window.setInterval(updateText, 120);
       }
+
+      // アフィリエイトリンク・外部リンクのクリック計測（Clarity / GA4）
+      document.querySelectorAll<HTMLAnchorElement>('a[data-track-cta]').forEach((anchor) => {
+        anchor.addEventListener('click', () => {
+          const itemId = anchor.dataset.itemId || 'unknown';
+          const itemTitle = anchor.dataset.itemTitle || '';
+          const category = anchor.dataset.itemCategory || '';
+          const mall = anchor.dataset.mall || 'external';
+
+          const win = window as Window & {
+            clarity?: (...args: unknown[]) => void;
+            gtag?: (...args: unknown[]) => void;
+          };
+
+          if (typeof win.clarity === 'function') {
+            win.clarity('set', 'last_clicked_item', itemId);
+            win.clarity('set', 'last_clicked_mall', mall);
+            win.clarity('event', `cta_${mall}_${itemId}`);
+          }
+
+          if (typeof win.gtag === 'function') {
+            win.gtag('event', 'affiliate_click', {
+              item_id: itemId,
+              item_name: itemTitle,
+              item_category: category,
+              affiliate_mall: mall,
+              link_url: anchor.href,
+            });
+          }
+        });
+      });
     </script>
   </body>
 </html>
