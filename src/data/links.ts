@@ -105,14 +105,6 @@ const linkItemSources: LinkItem[] = [
     productUrl: "https://www.amazon.co.jp/audible",
     isExternal: true,
   },
-  {
-    id: "youtube-channel",
-    category: "夜の音",
-    title: "YouTubeチャンネル",
-    description: "1分の自然の映像をYouTubeでも見られます",
-    url: "https://www.youtube.com/@1min_mindful",
-    isExternal: true,
-  },
 ];
 
 /**
