@@ -106,10 +106,10 @@ const linkItemSources: LinkItem[] = [
     isExternal: true,
   },
   {
-    id: "youtube-long-bgm",
+    id: "youtube-channel",
     category: "夜の音",
-    title: "長尺の睡眠用BGM（YouTube）",
-    description: "1時間以上の静かな雨音と環境音",
+    title: "YouTubeチャンネル",
+    description: "1分の自然の映像をYouTubeでも見られます",
     url: "https://www.youtube.com/@1min_mindful",
     isExternal: true,
   },
