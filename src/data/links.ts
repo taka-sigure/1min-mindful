@@ -1,10 +1,6 @@
 import { affiliateConfig } from "../config/affiliate";
 
-export type LinkCategory =
-  | "目元を休める"
-  | "灯りと香り"
-  | "眠りとバスタイム"
-  | "夜の音";
+export type LinkCategory = "目元を休める" | "灯りと香り" | "夜の音";
 
 /** リンク集の1件。商品ページはあとから asin か productUrl を足す。 */
 export interface LinkItem {
@@ -75,112 +71,32 @@ export const createRakutenSearchUrl = (query: string): string => {
 };
 
 const linkItemSources: LinkItem[] = [
-  // 目元を休める（TikTok紹介4アイテム）
   {
-    id: "nerugoo-eye-mask",
+    id: "megurhythm-steam-eye-mask",
     category: "目元を休める",
-    title: "nerugoo 充電式ホットアイマスク",
-    description: "画面を見続けた夜、シルクの肌触りで目の奥をじんわり温めるマスク",
-    searchQuery: "nerugoo ホットアイマスク 充電式",
-    rakutenQuery: "nerugoo ホットアイマスク",
+    title: "寝る前の蒸気アイマスク（めぐりズム）",
+    description: "袋を開けた夜、あたたかい蒸気が目元を包む使い切りのアイマスク",
+    asin: "B0FKB678DY",
     isExternal: true,
   },
   {
-    id: "niplux-eye-relax",
-    category: "目元を休める",
-    title: "NIPLUX EYE RELAX S アイウォーマー",
-    description: "こめかみから目元まで、温熱とやさしい加圧でほぐしたい夜に",
-    searchQuery: "NIPLUX EYE RELAX S アイウォーマー",
-    rakutenQuery: "NIPLUX EYE RELAX S",
+    id: "moon-garden-herbal-tea",
+    category: "灯りと香り",
+    title: "夜のノンカフェインハーブティー（ムーンガーデン）",
+    description: "夜、湯を注いでハーブの香りを待つティーバッグ",
+    asin: "B0GZGFZ2TS",
     isExternal: true,
   },
   {
-    id: "silk-sleep-mask",
-    category: "目元を休める",
-    title: "シルク・ふんわり遮光アイマスク",
-    description: "光をやさしく遮るマスクを、明かりが気になる夜に使っています",
-    searchQuery: "シルク アイマスク 遮光 洗える",
-    rakutenQuery: "シルク アイマスク 遮光",
-    isExternal: true,
-  },
-  {
-    id: "megurhythm-steam-mask",
-    category: "目元を休める",
-    title: "めぐりズム 蒸気でホットアイマスク",
-    description: "袋を開けるだけで約40℃の蒸気に包まれる、使い切りタイプの定番",
-    searchQuery: "めぐりズム 蒸気でホットアイマスク 完熟ゆず ラベンダー",
-    rakutenQuery: "めぐりズム 蒸気でホットアイマスク",
+    id: "silentia-earplugs",
+    category: "夜の音",
+    title: "静かな夜の耳栓（サイレンシア）",
+    description: "夜、耳へそっと入れるレギュラーサイズの耳栓",
+    asin: "B0B5L876DT",
     isExternal: true,
   },
 
-  // 灯りと香り（TikTok紹介4アイテム）
-  {
-    id: "water-ripple-lamp",
-    category: "灯りと香り",
-    title: "水面波紋のアンビエントライト・間接照明",
-    description: "寝る前、部屋の明かりを落として水面のゆらぎを眺めるライト",
-    searchQuery: "水面 波紋 ライト 間接照明 ベッドサイド",
-    rakutenQuery: "水面 波紋 ライト 間接照明",
-    isExternal: true,
-  },
-  {
-    id: "glass-aroma-candle",
-    category: "灯りと香り",
-    title: "夜のガラス製アロマキャンドル",
-    description: "画面を閉じたあと、揺れる灯りと香りのある時間に",
-    searchQuery: "アロマキャンドル ガラス ソイワックス リラックス",
-    rakutenQuery: "アロマキャンドル ガラス リラックス",
-    isExternal: true,
-  },
-  {
-    id: "brass-incense-stand",
-    category: "灯りと香り",
-    title: "焚いているお香・真鍮ガラスのお香立て",
-    description: "白檀やラベンダーの香りを、灰が散らないガラス筒のお香立てで",
-    searchQuery: "真鍮 ガラス お香立て インセンスホルダー",
-    rakutenQuery: "真鍮 ガラス お香立て",
-    isExternal: true,
-  },
-  {
-    id: "palo-santo-sticks",
-    category: "灯りと香り",
-    title: "パロサント香木スティック",
-    description: "火を灯さず置いておくだけでも、森のような甘い香りが漂う香木",
-    searchQuery: "パロサント スティック 香木 ペルー産",
-    rakutenQuery: "パロサント スティック 香木",
-    isExternal: true,
-  },
-
-  // 眠りとバスタイム（TikTok紹介3アイテム）
-  {
-    id: "imabari-towel-pillow",
-    category: "眠りとバスタイム",
-    title: "今治睡眠用タオル2（高さ調整タオル枕）",
-    description: "その日の首の疲れに合わせて、巻くだけで高さを微調整できる今治タオル枕",
-    searchQuery: "今治睡眠用タオル2 枕 Nelture",
-    rakutenQuery: "今治睡眠用タオル2",
-    isExternal: true,
-  },
-  {
-    id: "zero-gravity-gel-pillow",
-    category: "眠りとバスタイム",
-    title: "ヒツジのいらない枕（無重力TPEジェル枕）",
-    description: "頭を乗せた瞬間に圧力を分散し、熱がこもりにくい格子構造のジェル枕",
-    searchQuery: "ヒツジのいらない枕 至極 TPE ジェル枕",
-    rakutenQuery: "ヒツジのいらない枕",
-    isExternal: true,
-  },
-  {
-    id: "epsom-salt-bath",
-    category: "眠りとバスタイム",
-    title: "湯船用の国産エプソムソルト（シークリスタルス）",
-    description: "湯船に入れて、ゆっくり温まる夜のバスタイムに",
-    searchQuery: "シークリスタルス エプソムソルト 国産 入浴剤",
-    rakutenQuery: "シークリスタルス エプソムソルト",
-    isExternal: true,
-  },
-
-  // 夜の音
+  // 夜の音（商品以外）
   {
     id: "audible-night-reading",
     category: "夜の音",
@@ -281,6 +197,5 @@ export const linkItems: ResolvedLinkItem[] = linkItemSources.map((item) => {
 export const linkCategories: LinkCategory[] = [
   "目元を休める",
   "灯りと香り",
-  "眠りとバスタイム",
   "夜の音",
 ];
