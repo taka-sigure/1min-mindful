@@ -1,6 +1,6 @@
 import { affiliateConfig } from "../config/affiliate";
 
-export type LinkCategory = "目元を休める" | "灯りと香り" | "夜の音";
+export type LinkCategory = "目元を休める" | "枕" | "灯りと香り" | "お風呂" | "夜の音";
 
 /** リンク集の1件。商品ページはあとから asin か productUrl を足す。 */
 export interface LinkItem {
@@ -80,6 +80,49 @@ const linkItemSources: LinkItem[] = [
     isExternal: true,
   },
   {
+    id: "niplux-eye-relax-s",
+    category: "目元を休める",
+    title: "目元のアイウォーマー（NIPLUX）",
+    description: "充電してから、夜に目元へあてるコードレスのアイウォーマー",
+    asin: "B0DKT8JZBH",
+    isExternal: true,
+  },
+  {
+    id: "nerugoo-hot-eye-mask",
+    category: "目元を休める",
+    title: "充電式ホットアイマスク（nerugoo）",
+    description: "リバティ柄のカバー付き。充電して、夜に目元へあてるアイマスク",
+    asin: "B0DSG8CSZR",
+    isExternal: true,
+  },
+  {
+    id: "blackout-eye-mask",
+    category: "目元を休める",
+    title: "夜の遮光アイマスク",
+    description: "目元を覆って、部屋の明かりをさえぎる布のアイマスク",
+    searchQuery: "遮光 アイマスク",
+    isExternal: true,
+  },
+
+  // 枕
+  {
+    id: "imabari-towel-pillow",
+    category: "枕",
+    title: "今治タオルの枕",
+    description: "今治タオルを巻いて高さを合わせ、首もとに置く枕。専用のポール付き",
+    asin: "B09STHC3F1",
+    isExternal: true,
+  },
+  {
+    id: "gel-pillow",
+    category: "枕",
+    title: "夜のジェル枕",
+    description: "TPEのジェル枕。専用カバーをかけて、頭をのせる",
+    searchQuery: "無重力 ジェル枕 TPE",
+    isExternal: true,
+  },
+
+  {
     id: "moon-garden-herbal-tea",
     category: "灯りと香り",
     title: "夜のノンカフェインハーブティー（ムーンガーデン）",
@@ -87,6 +130,57 @@ const linkItemSources: LinkItem[] = [
     asin: "B0GZGFZ2TS",
     isExternal: true,
   },
+  {
+    id: "sozo-three-fragrant-woods",
+    category: "灯りと香り",
+    title: "お香 三大香木（SOZO）",
+    description: "淡路島の短いお香。沈丁花、くちなし、金木犀の順に香りが移る",
+    searchQuery: "SOZO 三大香木 お香",
+    isExternal: true,
+  },
+  {
+    id: "sozo-on-incense",
+    category: "灯りと香り",
+    title: "お香 穏（SOZO）",
+    description: "淡路島の短いお香。ラベンダーからジャスミンへ香りが移る",
+    searchQuery: "SOZO 穏 お香",
+    isExternal: true,
+  },
+  {
+    id: "brass-gourd-incense-holder",
+    category: "灯りと香り",
+    title: "真鍮のひょうたん香立て",
+    description: "スティックのお香を挿し、ガラスで灰を受ける真鍮の香立て",
+    searchQuery: "真鍮 ひょうたん 香立て",
+    isExternal: true,
+  },
+  {
+    id: "amber-glass-aroma-candle",
+    category: "灯りと香り",
+    title: "アンバーグラスのアロマキャンドル",
+    description: "琥珀色のガラス瓶に入った小さなキャンドル。火をともして机に置く",
+    searchQuery: "アンバーグラス アロマキャンドル",
+    isExternal: true,
+  },
+  {
+    id: "water-wave-light",
+    category: "灯りと香り",
+    title: "水面の波紋ライト",
+    description: "ベッドの脇に置いて、壁の波紋をぼんやり眺める小さなライト",
+    searchQuery: "水面 波紋 プロジェクター ライト",
+    isExternal: true,
+  },
+
+  // お風呂
+  {
+    id: "epsom-salt",
+    category: "お風呂",
+    title: "お風呂のエプソムソルト",
+    description: "湯船に溶かして入る、粒の入浴用ソルト。計量スプーン付きの3kg",
+    asin: "B00N1JGPFG",
+    isExternal: true,
+  },
+
   {
     id: "silentia-earplugs",
     category: "夜の音",
@@ -188,6 +282,8 @@ export const linkItems: ResolvedLinkItem[] = linkItemSources.map((item) => {
 
 export const linkCategories: LinkCategory[] = [
   "目元を休める",
+  "枕",
   "灯りと香り",
+  "お風呂",
   "夜の音",
 ];
